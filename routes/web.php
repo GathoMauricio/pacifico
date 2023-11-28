@@ -19,6 +19,7 @@ Route::get('buscar/{q}', [App\Http\Controllers\HomeController::class, 'buscar'])
 Route::get('categoria/{categoria}', [App\Http\Controllers\HomeController::class, 'categoria'])->name('categoria');
 #Libros
 Route::get('libros', [App\Http\Controllers\LibroController::class, 'index'])->name('libros');
+Route::get('libros_show/{libro_id}', [App\Http\Controllers\LibroController::class, 'show'])->name('libros_show');
 Route::get('libros_create', [App\Http\Controllers\LibroController::class, 'create'])->name('libros_create');
 Route::post('libros_store', [App\Http\Controllers\LibroController::class, 'store'])->name('libros_store');
 Route::get('libros_edit/{libro_id}', [App\Http\Controllers\LibroController::class, 'edit'])->name('libros_edit');

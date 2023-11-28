@@ -38,7 +38,12 @@
                                             <div class="card-header">
                                                 <h5 class="text-center"><b>{{ $libro->titulo }}</b></h5>
                                                 <div class="text-secondary text-center" style="width:100%;">
-                                                    <i>AUTORES</i>
+                                                    <ul>
+                                                        @foreach ($libro->autores as $autor)
+                                                            <li>{{ $autor->autor->nombre }} {{ $autor->autor->amaterno }}
+                                                                {{ $autor->autor->apaterno }}</li>
+                                                        @endforeach
+                                                    </ul>
                                                 </div>
                                             </div>
                                             <div class="card-body">
@@ -49,8 +54,8 @@
                                                 <table style="width:100%;">
                                                     <tr>
                                                         <td class="text-center">
-                                                            <button class="btn btn-primary"><i
-                                                                    class="bi bi-eye"></i></button>
+                                                            <button onclick="verLibro({{ $libro->id }})"
+                                                                class="btn btn-primary"><i class="bi bi-eye"></i></button>
                                                         </td>
                                                         <td class="text-center">
                                                             <button class="btn btn-primary"><i
@@ -72,26 +77,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="test_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('libros.show')
 @endsection

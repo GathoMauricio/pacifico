@@ -17,6 +17,13 @@ class LibroController extends Controller
         return view('libros.index', compact('libros'));
     }
 
+    public function show($libro_id)
+    {
+        $libro = Libro::where('id', $libro_id)->with('categoria')->with('editorial')->with('autores')->first();
+        return $libro;
+        return response()->json($libro);
+    }
+
     public function create()
     {
         $categorias = Categoria::orderBy('nombre')->get();
