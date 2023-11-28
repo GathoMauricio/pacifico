@@ -32,36 +32,39 @@
                         @endisset
                         <div class="container">
                             <div class="row">
-
-                                <div class="col-md-3 p-1">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="text-center"><b>Caballo de troya</b></h5>
-                                            <div class="text-secondary text-center" style="width:100%;">
-                                                <i>J. J. Benitez</i>
+                                @foreach ($libros as $key => $libro)
+                                    <div class="col-md-3 p-1">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="text-center"><b>{{ $libro->titulo }}</b></h5>
+                                                <div class="text-secondary text-center" style="width:100%;">
+                                                    <i>AUTORES</i>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <img src="{{ asset('storage/libros/' . $libro->imagen) }}" width="100%"
+                                                    alt="{{ $libro->imagen }}">
+                                            </div>
+                                            <div class="card-footer">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <button class="btn btn-primary"><i
+                                                                    class="bi bi-eye"></i></button>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button class="btn btn-primary"><i
+                                                                    class="bi bi-cart"></i></button>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <h5 class="text-primary"><b>${{ $libro->precio }}</b></h5>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
-                                        <div class="card-body">
-                                            <img src="{{ asset('img/test1.jpeg') }}" width="100%" alt="">
-                                        </div>
-                                        <div class="card-footer">
-                                            <table style="width:100%;">
-                                                <tr>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary"><i class="bi bi-cart"></i></button>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <h5 class="text-primary"><b>$0.00</b></h5>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
                                     </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>

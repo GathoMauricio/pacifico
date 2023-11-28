@@ -44,4 +44,9 @@ class Libro extends Model
         )
             ->withDefault();
     }
+
+    public function autores()
+    {
+        return $this->hasMany('App\Models\AutorLibro', 'libro_id');
+    }
 }

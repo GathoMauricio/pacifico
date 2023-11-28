@@ -33,15 +33,29 @@
                                     <td>{{ $libro->editorial->nombre }}</td>
                                     <td>{{ $libro->titulo }}</td>
                                     <td>{{ $libro->resenia }}</td>
-                                    <td>AUTORES</td>
+                                    <td>
+                                        <ul>
+                                            @foreach ($libro->autores as $autor)
+                                                <li>
+                                                    {{ $autor->autor->nombre }} {{ $autor->autor->apaterno }}
+                                                    {{ $autor->autor->amaterno }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                     <td>{{ $libro->isbn }}</td>
                                     <td>${{ $libro->precio }}</td>
                                     <td>{{ $libro->anio_edicion }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-warning" title="Editar"><i
-                                                class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" title="Eliminar"><i
-                                                class="bi bi-trash3"></i></a>
+                                        <a href="{{ url('libros_edit', $libro->id) }}" class="btn btn-warning"
+                                            title="Editar"><i class="bi bi-pencil"></i></a>
+                                        <a href="javascript:void(0);" onclick="eliminarLibro({{ $libro->id }})"
+                                            class="btn btn-danger" title="Eliminar"><i class="bi bi-trash3"></i></a>
+                                        <form action="{{ url('libros_delete', $libro->id) }}"
+                                            id="form_libro_delete_{{ $libro->id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

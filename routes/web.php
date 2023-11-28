@@ -21,3 +21,6 @@ Route::get('categoria/{categoria}', [App\Http\Controllers\HomeController::class,
 Route::get('libros', [App\Http\Controllers\LibroController::class, 'index'])->name('libros');
 Route::get('libros_create', [App\Http\Controllers\LibroController::class, 'create'])->name('libros_create');
 Route::post('libros_store', [App\Http\Controllers\LibroController::class, 'store'])->name('libros_store');
+Route::get('libros_edit/{libro_id}', [App\Http\Controllers\LibroController::class, 'edit'])->name('libros_edit');
+Route::put('libros_update/{libro_id}', [App\Http\Controllers\LibroController::class, 'update'])->name('libros_update');
+Route::delete('libros_delete/{libro_id}', [App\Http\Controllers\LibroController::class, 'destroy'])->name('libros_delete');
