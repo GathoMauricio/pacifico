@@ -61,8 +61,14 @@
                                                                 class="btn btn-primary"><i class="bi bi-eye"></i></button>
                                                         </td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-primary"><i
-                                                                    class="bi bi-cart"></i></button>
+                                                            @if (Auth::check())
+                                                                <button onclick="agregarLibro({{ $libro->id }})"
+                                                                    class="btn btn-primary"><i
+                                                                        class="bi bi-cart"></i></button>
+                                                            @else
+                                                                <button onclick="sinSesion()" class="btn btn-primary"><i
+                                                                        class="bi bi-cart"></i></button>
+                                                            @endif
                                                         </td>
                                                         <td class="text-center">
                                                             <h5 class="text-primary"><b>${{ $libro->precio }}</b></h5>

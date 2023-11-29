@@ -10,6 +10,15 @@ $(document).ready(function () {
             window.location = ruta + "/" + q;
         }
     });
+    axios
+        .get("/cargar_carrito")
+        .then((response) => {
+            $("#cantidad_carrito").text(response.data.cantidad_carrito);
+            $("#precio_carrito").text(response.data.precio_carrito);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 });
 
 window.buscarCategoria = (categoria_id) => {
@@ -133,4 +142,49 @@ window.actualizarPassword = () => {
     } else {
         mensajeError("Las confirmación no coincide.");
     }
+};
+
+window.agregarLibro = (libro_id) => {
+    alertify.confirm(
+        "Alerta",
+        "¿Agregar libro al carrito?",
+        function () {
+            axios
+                .get("/agregar_libro/" + libro_id)
+                .then((response) => {
+                    $("#cantidad_carrito").text(response.data.cantidad_carrito);
+                    $("#precio_carrito").text(response.data.precio_carrito);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        function () {}
+    );
+};
+
+window.removerLibro = (libro_id) => {
+    alertify.confirm(
+        "Alerta",
+        "Remover libro del carrito?",
+        function () {
+            axios
+                .get("/remover_libro/" + libro_id)
+                .then((response) => {
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        function () {}
+    );
+};
+
+window.sinSesion = () => {
+    alertify.alert(
+        "Alerta",
+        "Por favor inicie sesión para agregar contenido al carrito.",
+        function () {}
+    );
 };

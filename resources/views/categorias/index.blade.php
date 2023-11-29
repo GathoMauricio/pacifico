@@ -35,6 +35,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @if (Cart::count() <= 0)
+                                    <tr>
+                                        <td>NO hay libros agregados</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

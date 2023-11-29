@@ -38,6 +38,10 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('carrito') }}">(<span id="cantidad_carrito">0</span>)<i
+                                    class="bi bi-cart"></i> $<span id="precio_carrito">000</span></a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

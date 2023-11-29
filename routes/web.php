@@ -34,3 +34,8 @@ Route::resource('editoriales', App\Http\Controllers\EditorialController::class);
 #Usuarios
 Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
 Route::put('usuarios_update_password', [App\Http\Controllers\UsuarioController::class, 'UpdatePassword']);
+#Carrito
+Route::get('carrito', [App\Http\Controllers\CarritoController::class, 'index']);
+Route::get('cargar_carrito', [App\Http\Controllers\CarritoController::class, 'cargarCarrito']);
+Route::get('agregar_libro/{libro_id}', [App\Http\Controllers\CarritoController::class, 'agregarLibro'])->name('agregar_libro');
+Route::get('remover_libro/{libro_id}', [App\Http\Controllers\CarritoController::class, 'removerLibro'])->name('remover_libro');
