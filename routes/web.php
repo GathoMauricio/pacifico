@@ -31,5 +31,6 @@ Route::resource('autores', App\Http\Controllers\AutorController::class);
 Route::resource('categorias', App\Http\Controllers\CategoriaController::class);
 #Autores
 Route::resource('editoriales', App\Http\Controllers\EditorialController::class);
-#Autores
+#Usuarios
 Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
+Route::put('usuarios_update_password', [App\Http\Controllers\UsuarioController::class, 'UpdatePassword']);

@@ -84,3 +84,53 @@ window.eliminarEditorial = (editorial_id) => {
         function () {}
     );
 };
+
+window.eliminarUsuario = (usuario_id) => {
+    alertify.confirm(
+        "Alerta",
+        "¿Realmente desea eliminar este registro?",
+        function () {
+            $("#form_usuarios_delete_" + usuario_id).submit();
+        },
+        function () {}
+    );
+};
+
+window.editarPassword = (usuario_id) => {
+    $("#txt_editar_usuario_id").val(usuario_id);
+    $("#modal_editar_password").modal("show");
+};
+
+window.actualizarPassword = () => {
+    let usuario_id = $("#txt_editar_usuario_id").val();
+    let password = $("#txt_editar_password").val();
+    let password_confirmation = $("#txt_editar_password_confirmation").val();
+    if (password == password_confirmation) {
+        if (password.length >= 6) {
+            axios
+                .post("/usuarios_update_password", {
+                    _token: $('meta[name="csrf-token"]').attr("content"),
+                    _method: "PUT",
+                    usuario_id: usuario_id,
+                    password: password,
+                })
+                .then((response) => {
+                    if (response.data.error == 0) {
+                        mensajeCorrecto(response.data.message);
+                        $("#txt_editar_usuario_id").val("");
+                        $("#txt_editar_password").val("");
+                        $("#modal_editar_password").modal("hide");
+                    } else {
+                        mensajeError(response.data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            mensajeError("La contraseña debe contener por lo menos 6 dígitos.");
+        }
+    } else {
+        mensajeError("Las confirmación no coincide.");
+    }
+};
