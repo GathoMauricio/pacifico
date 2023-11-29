@@ -62,7 +62,8 @@ class AutorController extends Controller
     {
         $autor = Autor::findOrFail($id);
         $autor_libros = AutorLibro::where('autor_id', $autor->id);
-        if ($autor_libros->delete() && $autor->delete()) {
+        $autor_libros->delete();
+        if ($autor->delete()) {
             return redirect('autores')->with('mensaje_correcto', 'El registro se eliminó correctamente');
         } else {
             return redirect('autores')->with('mensaje_error', 'Ocurrió un error durante el proceso');
