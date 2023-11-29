@@ -22,6 +22,9 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row p-3">
+                            {{ $libros->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                     <div class="card-body">
                         @isset($q)

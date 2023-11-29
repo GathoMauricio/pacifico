@@ -72,6 +72,9 @@
                                         </a>
                                     @endif
                                     @if (Auth::user()->rol_id == 2)
+                                        <a class="dropdown-item" href="{{ url('autores') }}">
+                                            Cat. Autores
+                                        </a>
                                         <a class="dropdown-item" href="{{ url('editoriales') }}">
                                             Cat. Editoriales
                                         </a>

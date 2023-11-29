@@ -25,3 +25,6 @@ Route::post('libros_store', [App\Http\Controllers\LibroController::class, 'store
 Route::get('libros_edit/{libro_id}', [App\Http\Controllers\LibroController::class, 'edit'])->name('libros_edit');
 Route::put('libros_update/{libro_id}', [App\Http\Controllers\LibroController::class, 'update'])->name('libros_update');
 Route::delete('libros_delete/{libro_id}', [App\Http\Controllers\LibroController::class, 'destroy'])->name('libros_delete');
+
+#Autores
+Route::resource('autores', App\Http\Controllers\AutorController::class);

@@ -51,3 +51,36 @@ window.eliminarLibro = (libro_id) => {
         function () {}
     );
 };
+
+window.eliminarAutor = (autor_id) => {
+    alertify.confirm(
+        "Alerta",
+        "Si elimina este registro se eliminarán también todos los registros asociados a este\n¿Realmente desea eliminar este registro?",
+        function () {
+            $("#form_autores_delete_" + autor_id).submit();
+        },
+        function () {}
+    );
+};
+
+window.eliminarCategoria = (categoria_id) => {
+    alertify.confirm(
+        "Alerta",
+        "Si elimina este registro se eliminarán también todos los libros asociados a este\n¿Realmente desea eliminar este registro?",
+        function () {
+            $("#form_categorias_delete_" + categoria_id).submit();
+        },
+        function () {}
+    );
+};
+
+window.eliminarEditorial = (editorial_id) => {
+    alertify.confirm(
+        "Alerta",
+        "Si elimina este registro se eliminarán también todos los libros asociados a este\n¿Realmente desea eliminar este registro?",
+        function () {
+            $("#form_editoriales_delete_" + editorial_id).submit();
+        },
+        function () {}
+    );
+};
